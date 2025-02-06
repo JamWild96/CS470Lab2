@@ -1,0 +1,40 @@
+{
+  "configurations": [
+    {
+      "name": "Build with Make",
+      "type": "command",
+      "program": "make",
+      "args": ["all"]
+    },
+    {
+      "name": "Run Program",
+      "type": "command",
+      "program": "/bin/sh",
+      "args": ["-c", "./procmgr_sim"]
+    },
+    {
+      "name": "Build & Run",
+      "type": "command",
+      "program": "make",
+      "args": ["run"]
+    },
+    {
+      "name": "Clean Build Files",
+      "type": "command",
+      "program": "make",
+      "args": ["clean"]
+    },
+    {
+      "name": "Debug Build",
+      "type": "command",
+      "program": "make",
+      "args": ["debug"]
+    },
+    {
+      "name": "Verbose Build",
+      "type": "command",
+      "program": "make",
+      "args": ["verbose"]
+    }
+  ]
+}
