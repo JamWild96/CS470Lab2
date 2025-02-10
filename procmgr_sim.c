@@ -18,7 +18,7 @@ void execute_task(int task_number) {
             {"date", NULL, NULL},
             {"whoami", NULL, NULL},
             {"pwd", NULL, NULL},
-            {"ps", NULL, NULL},
+            {"ps", "-x", NULL},
             {"uname", "-s", NULL},
             {"uptime", NULL, NULL},
             {"hostname", NULL, NULL},
