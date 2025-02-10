@@ -1,32 +1,25 @@
 Process Management Simulation in C
 
 Introduction
+
 Process management is a fundamental concept in operating systems, involving the creation, execution, and termination of processes. In this project, a C program (procmgr_sim.c) demonstrates process creation, execution, and management using system calls such as fork(), execvp(), and wait(). The accompanying Makefile provides a structured approach to compiling and executing the program using gcc. This report summarizes the implementation, analyzes the interaction between parent and child processes, and presents observations on process execution.
 
 Implementation Summary
-The C program, procmgr_sim.c, simulates process management by creating multiple child processes that execute predefined tasks. The program:
-	•	Utilizes fork() to create child processes.
-	•	Employs execvp() to replace the child process image with a new program.
-	•	Uses wait() in the parent process to synchronize execution and prevent orphan processes.
-	•	Demonstrates execution of simple system commands such as ls, date, and echo.
 
-The Makefile automates compilation using gcc with C17 compliance and additional warning flags (-Wall, -Wextra, -pedantic). It defines targets for:
-	•	Compiling the source into an object file.
-	•	Linking the object file to generate an executable (procmgr_sim).
-	•	Running the program automatically after compilation.
-	•	Enabling debugging with -g.
+The C program, procmgr_sim.c, simulates process management by creating multiple child processes that execute predefined tasks. The program utilizes fork() to create child processes, employs execvp() to replace the child process image with a new program, and uses wait() in the parent process to synchronize execution and prevent orphan processes. Additionally, it demonstrates execution of simple system commands such as ls, date, and echo.
+
+The Makefile automates compilation using gcc with C17 compliance and additional warning flags (-Wall, -Wextra, -pedantic). It defines targets for compiling the source into an object file, linking the object file to generate an executable (procmgr_sim), and running the program automatically after compilation. Furthermore, the Makefile enables debugging with the -g flag, allowing for enhanced error detection and troubleshooting.
 
 Results and Observations
-A. Process Creation and Management
-The program spawns NUM_CHILDREN (10) child processes using fork(). Each child executes a unique task through the execvp() system call, replacing its memory space with a new process image. If execvp() fails, an error message is displayed, ensuring robustness.
 
-The parent process waits for each child’s termination using wait(), ensuring orderly execution and preventing zombie processes.
+Process Creation and Management
 
-B. Parent-Child Interaction
-	•	The parent creates child processes iteratively.
-	•	Each child process executes a predefined command (e.g., echo "Hello Jam", ls, date).
-	•	The parent process blocks execution using wait(), ensuring all children complete before proceeding.
-	•	Output order may vary due to scheduling differences by the operating system.
+The program spawns NUM_CHILDREN (10) child processes using fork(). Each child executes a unique task through the execvp() system call, replacing its memory space with a new process image. If execvp() fails, an error message is displayed, ensuring robustness. The parent process waits for each child’s termination using wait(), ensuring orderly execution and preventing zombie processes.
+
+Parent-Child Interaction
+
+The parent process creates child processes iteratively, with each child executing a predefined command such as echo "Hello Jam", ls, or date. The parent process blocks execution using wait(), ensuring that all children complete before it proceeds. Due to operating system scheduling, the order of output may vary, demonstrating the non-deterministic nature of process execution.
 
 Conclusion
+
 This project effectively demonstrates fundamental process management in Unix-based systems. By leveraging system calls such as fork(), execvp(), and wait(), the program illustrates how child processes execute independently while the parent coordinates execution. The structured Makefile enhances development efficiency, making compilation and execution seamless. Future improvements could include dynamic command assignment, inter-process communication (IPC), or signal handling for enhanced process control.
